@@ -91,7 +91,7 @@ AppAsset::register($this);
                             </li>
                             <li><a href="">Пресс-центр</a>
                                 <ul class="sub-menu">
-                                    <li><a href="/site/news">Новости</a></li>
+                                    <li><a href="/site/news">News</a></li>
                                     <li><a href="/site/video">Видео галерея</a>
                                     <li><a href="/site/photo">Фотогалерея</a>
                                
