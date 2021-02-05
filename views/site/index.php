@@ -110,7 +110,7 @@ $this->title = 'Orzu - tekst';
                     <div class="col-xl-4" data-aos="fade-down-right">
                         <div class="main-uniform-block">
                             <div class="main-uniform-img" style="background-image: url('<?= '/uploads/'.$item->image ?>');"></div>
-                            <a href="<?= yii\helpers\Url::to(['/site/uniform','id'=>$item->id]) ?>" class="main-uniform-title"><?= $item->title ?></a>
+                            <a href="<?= yii\helpers\Url::to(['/site/uniforma','id'=>$item->id]) ?>" class="main-uniform-title"><?= $item->title ?></a>
                         </div>
                     </div>
                 <?php endforeach; ?>

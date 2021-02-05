@@ -114,6 +114,16 @@ use app\modules\admin\widgets\Menu;
                                     'icon' => '<i class="fa fa-tachometer"></i>',
                                 ],
                                 [
+                                    'label' => 'Tools',
+                                    'url' => ['tools/index'],
+                                    'icon' => '<i class="fa fa-tachometer"></i>',
+                                ],
+                                [
+                                    'label' => 'Numbers',
+                                    'url' => ['numbers/index'],
+                                    'icon' => '<i class="fa fa-tachometer"></i>',
+                                ],
+                                [
                                     'label' => 'Breadcrumbs',
                                     'url' => ['breadcrumbs/index'],
                                     'icon' => '<i class="fa fa-tachometer"></i>',

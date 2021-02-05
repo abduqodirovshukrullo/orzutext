@@ -26,6 +26,10 @@ use app\models\Carousel;
 use app\models\OurPartners;
 use app\models\Contratcs;
 use app\models\GalleryPhoto;
+use app\models\OurWork;
+use app\models\OurAdvantage;
+use app\models\Numbers;
+use app\models\Tools;
 class SiteController extends Controller
 {
     public function init()
@@ -268,11 +272,31 @@ class SiteController extends Controller
         ]);
     }
     public function actionUniforma(){
-        $polotno = Products::find()
+        $id = Yii::$app->request->get('id')?Yii::$app->request->get('id'):'';
+        $products = Products::find()
         ->andWhere(['parent_id'=>Products::UNIFORM])
+        ->andWhere(['!=','id',$id])
         ->andWhere(['status'=>BaseModel::STATUS_ACTIVE])
         ->orderBy(['order'=>SORT_ASC])->all();
-        return $this->render('uniforma');
+        $product = Products::find()
+        ->andWhere(['!=','id',$id])
+        ->andWhere(['parent_id'=>Products::UNIFORM])
+        ->andWhere(['status'=>BaseModel::STATUS_ACTIVE])
+        ->orderBy(['order'=>SORT_ASC])->one();
+        $work = OurWork::find()->where(['status'=>BaseModel::STATUS_ACTIVE])->orderBy(['order'=>SORT_ASC])->all();
+        $advantage = OurAdvantage::find()->where(['status'=>BaseModel::STATUS_ACTIVE])->orderBy(['order'=>SORT_ASC])->all();
+        $partners = OurPartners::find()->where(['status'=>BaseModel::STATUS_ACTIVE])->orderBy(['order'=>SORT_ASC])->all();
+        $numbers = Numbers::find()->where(['status'=>BaseModel::STATUS_ACTIVE])->orderBy(['order'=>SORT_ASC])->all();
+        $tools = Tools::find()->where(['status'=>BaseModel::STATUS_ACTIVE])->orderBy(['order'=>SORT_ASC])->all();
+        return $this->render('uniforma',[
+            'products'=>$products,
+            'work'=>$work,
+            'advantage'=>$advantage,
+            'partners'=>$partners,
+            'numbers'=>$numbers,
+            'tools'=>$tools,
+            'product'=>$product,
+        ]);
     }
     public function actionVacancy(){
         $vacancy = Vacancy::find()->where(['status'=>BaseModel::STATUS_ACTIVE])->orderBy(['order'=>SORT_ASC])->all();

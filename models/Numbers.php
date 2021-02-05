@@ -5,24 +5,24 @@ namespace app\models;
 use Yii;
 
 /**
- * This is the model class for table "our_advantage".
+ * This is the model class for table "numbers".
  *
  * @property int $id
- * @property string $image
+ * @property int $number
  * @property string $title_uz
  * @property string $title_en
  * @property string $title_ru
  * @property int $status
  * @property int $order
  */
-class OurAdvantage extends BaseModel
+class Numbers extends BaseModel
 {
     /**
      * {@inheritdoc}
      */
     public static function tableName()
     {
-        return 'our_advantage';
+        return 'numbers';
     }
 
     /**
@@ -31,8 +31,8 @@ class OurAdvantage extends BaseModel
     public function rules()
     {
         return [
-            [['status', 'order'], 'integer'],
-            [['image', 'title_uz', 'title_en', 'title_ru'], 'string', 'max' => 255],
+            [['number', 'status', 'order'], 'integer'],
+            [['title_uz', 'title_en', 'title_ru'], 'string', 'max' => 255],
             [['base_file', 'base_files','video_file'], 'safe'],
         ];
     }
@@ -44,7 +44,7 @@ class OurAdvantage extends BaseModel
     {
         return [
             'id' => Yii::t('app', 'ID'),
-            'image' => Yii::t('app', 'Image'),
+            'number' => Yii::t('app', 'Number'),
             'title_uz' => Yii::t('app', 'Title Uz'),
             'title_en' => Yii::t('app', 'Title En'),
             'title_ru' => Yii::t('app', 'Title Ru'),

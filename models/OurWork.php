@@ -56,4 +56,17 @@ class OurWork extends BaseModel
             'order' => Yii::t('app', 'Order'),
         ];
     }
+    public function getTitle()
+    {
+        return $this->{'title_'. Yii::$app->language};
+    }
+
+    public function getContent()
+    {
+        return $this->{'content_'. Yii::$app->language};
+    }
+    public function getSubContent()
+    {
+        return $this->{'sub_content_'. Yii::$app->language};
+    }
 }
