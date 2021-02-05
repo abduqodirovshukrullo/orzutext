@@ -31,7 +31,7 @@ AppAsset::register($this);
     <header class="header">
         <div class="container">
             <div class="header-wrap">
-                <a href="#" class="header-center-logo">
+                <a href="/" class="header-center-logo">
                     <img src="/app/images/logo.png" alt="">
                 </a>
                 <div class="header-center-container wow fadeInUp">
@@ -44,16 +44,16 @@ AppAsset::register($this);
                     </div>
                     <div class="header-center-container-bottom">
                         <ul class="header-menu">
-                            <a href="#" class="header-menu-logo">
+                            <a href="/" class="header-menu-logo">
                                 <img src="/app/images/logo.png" alt="">
                             </a>
                             <li><a>О компании</a>
                                 <ul class="sub-menu">
-                                    <li><a href="">About Us</a></li>
-                                    <li><a href="">Diplomas and certificates</a></li>
-                                    <li><a href="">History</a>
+                                    <li><a href="/site/about">О нас</a></li>
+                                    <li><a href="/site/certificates">Дипломы и сертификаты</a></li>
+                                    <li><a href="/site/milestones">История</a>
                                     </li>
-                                    <li><a href="">Our clients</a></li>
+                                    <!-- <li><a href="">Our clients</a></li>
                                     <li><a href="">Honey</a></li>
                                     <li><a>others</a>
                                         <ul class="sub-menu">
@@ -61,14 +61,14 @@ AppAsset::register($this);
                                             <li><a href="">woman</a></li>
                                             <li><a href="">kids</a></li>
                                         </ul>
-                                    </li>
+                                    </li> -->
                                 </ul>
                             </li>
                             <li class="active"><a href="">Наши бренды</a></li>
                             <li><a href="">продукция</a></li>
                             <li><a href="">Услуги</a>
                                 <ul class="sub-menu">
-                                    <li><a href="">About Us</a></li>
+                                    <!-- <li><a href="">About Us</a></li>
                                     <li><a href="">Diplomas and certificates</a>
                                         <ul class="sub-menu">
                                             <li><a href="">man</a></li>
@@ -86,12 +86,19 @@ AppAsset::register($this);
                                             <li><a href="">woman</a></li>
                                             <li><a href="">kids</a></li>
                                         </ul>
-                                    </li>
+                                    </li> -->
                                 </ul>
                             </li>
-                            <li><a href="">Пресс-центр</a></li>
-                            <li><a href="">карьера</a></li>
-                            <li><a href="">контакты</a></li>
+                            <li><a href="">Пресс-центр</a>
+                                <ul class="sub-menu">
+                                    <li><a href="/site/news">Новости</a></li>
+                                    <li><a href="/site/video">Видео галерея</a>
+                                    <li><a href="/site/photo">Фотогалерея</a>
+                               
+                                </ul>
+                            </li>
+                            <li><a href="/site/vacancy">карьера</a></li>
+                            <li><a href="/site/contact">контакты</a></li>
                             <div class="header-menu-lang">
                                 <div class="header-lang-top">
                                     <p>RU</p>
