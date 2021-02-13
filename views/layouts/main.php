@@ -38,7 +38,7 @@ AppAsset::register($this);
                     <div class="header-center-container-top">
                         <a href="tel:+998935054505">+998 93 505 45 05</a>
                         <a href="" class="header-center-container-top-whatsapp">
-                            <p>Написать в whatsap</p>
+                            <p>Написать в whatsapp</p>
                             <img src="/app/images/whatsapp.png" alt="">
                         </a>
                     </div>
