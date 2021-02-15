@@ -12,7 +12,7 @@ $this->title = 'Contact';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="pages-info" style="background-image: url('/app/images/lenta.png');">
-    <h3 class="pages-info-title wow tada">О компании</h3>
+    <h3 class="pages-info-title">О компании</h3>
     <ul class="pages-info-menu">
         <li class="pages-info-menu-item"><a class="pages-info-menu-link" href="">Главная</a></li>
         <li class="pages-info-menu-item"><a class="pages-info-menu-link" href="">О компании</a></li>

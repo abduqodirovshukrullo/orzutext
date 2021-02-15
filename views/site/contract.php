@@ -12,11 +12,11 @@ use yii\captcha\Captcha;
 $this->title = $contract->title;
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="pages-info" style="background-image: url('<?='/uploads/'.$this->params['breadImage']?>');">
-    <h3 class="pages-info-title wow tada"><?=  $this->title ?></h3>
+<div class="pages-info" style="background-image: url('<?= '/uploads/' . $this->params['breadImage'] ?>');">
+    <h3 class="pages-info-title"><?= $this->title ?></h3>
     <ul class="pages-info-menu">
         <li class="pages-info-menu-item"><a class="pages-info-menu-link" href="<?= Yii::$app->homeUrl ?>"><?= Yii::t('app', 'Главная'); ?></a></li>
-        <li class="pages-info-menu-item"><a class="pages-info-menu-link" href="javascript:void(0)"><?=  $this->title ?></a></li>
+        <li class="pages-info-menu-item"><a class="pages-info-menu-link" href="javascript:void(0)"><?= $this->title ?></a></li>
     </ul>
 </div>
 
@@ -33,10 +33,10 @@ $this->params['breadcrumbs'][] = $this->title;
     <div class="container">
         <div class="contract-img-block">
             <div class="contract-img">
-                <img src="<?= '/uploads/'.$contract->left_image ?>" alt="">
+                <img src="<?= '/uploads/' . $contract->left_image ?>" alt="">
             </div>
             <div class="contract-img">
-                <img src="<?= '/uploads/'.$contract->right_image ?>" alt="">
+                <img src="<?= '/uploads/' . $contract->right_image ?>" alt="">
             </div>
         </div>
         <div class="contract-btn-block">
@@ -51,11 +51,11 @@ $this->params['breadcrumbs'][] = $this->title;
         <div class="partners">
             <h2 class="main-title partners-title"><?= Yii::t('app', 'Нам доверяют'); ?></h2>
             <div class="partners-block">
-            <?php foreach($partners as $item): ?>
-                <a href="" class="partners-item">
-                    <img src="<?= '/uploads/'.$item->image ?>" alt="">
-                </a>
-            <?php endforeach; ?>
+                <?php foreach ($partners as $item) : ?>
+                    <a href="" class="partners-item">
+                        <img src="<?= '/uploads/' . $item->image ?>" alt="">
+                    </a>
+                <?php endforeach; ?>
             </div>
         </div>
     </div>
