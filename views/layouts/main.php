@@ -10,7 +10,9 @@ use yii\bootstrap\Nav;
 use yii\bootstrap\NavBar;
 use yii\widgets\Breadcrumbs;
 use app\assets\AppAsset;
-
+use app\models\Categories;
+use app\models\BaseModel;
+$categories = Categories::find()->where(['status'=>BaseModel::STATUS_ACTIVE])->orderBy(['order'=>SORT_DESC])->all();
 AppAsset::register($this);
 ?>
 <?php $this->beginPage() ?>
@@ -65,7 +67,14 @@ AppAsset::register($this);
                                 </ul>
                             </li>
                             <li class="active"><a href="">Наши бренды</a></li>
-                            <li><a href="">продукция</a></li>
+                            <li><a href="">продукция</a>
+                                <ul class="sub-menu">
+                                    <?php foreach($categories as $item): ?>
+                                        <li><a href="<?= $item->link ?>"><?= $item->title ?></a></li>
+                                    <?php endforeach; ?>
+                                 
+                                </ul>
+                            </li>
                             <li><a href="">Услуги</a>
                                 <ul class="sub-menu">
                                     <!-- <li><a href="">About Us</a></li>

@@ -81,7 +81,7 @@ $this->title = 'Orzu - tekst';
         </div>
     </div>
 
-    <div class="main-patrners">
+    <div id="contract-section" class="main-patrners">
         <div class="container">
             <div class="main-title">контрактное производство</div>
             <div class="main-patrners-wrap">
@@ -98,7 +98,7 @@ $this->title = 'Orzu - tekst';
                 <?php endforeach; ?>
                 
             </div>
-            <button class="main-tower-middle-btn">Посмотреть все</button>
+            <!-- <button class="main-tower-middle-btn">Посмотреть все</button> -->
         </div>
     </div>
 
@@ -110,12 +110,12 @@ $this->title = 'Orzu - tekst';
                     <div class="col-xl-4" data-aos="fade-down-right">
                         <div class="main-uniform-block">
                             <div class="main-uniform-img" style="background-image: url('<?= '/uploads/'.$item->image ?>');"></div>
-                            <a href="<?= yii\helpers\Url::to(['/site/uniforma','id'=>$item->id]) ?>" class="main-uniform-title"><?= $item->title ?></a>
+                            <a href="<?= yii\helpers\Url::to(['/site/uniforma']) ?>" class="main-uniform-title"><?= $item->title ?></a>
                         </div>
                     </div>
                 <?php endforeach; ?>
             </div>
-            <button class="main-tower-middle-btn">Посмотреть все</button>
+            <button class="main-tower-middle-btn">  <a href="/site/uniforma"> Посмотреть все</a></button>
         </div>
     </div>
 

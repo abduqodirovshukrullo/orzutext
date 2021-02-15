@@ -92,4 +92,31 @@ class Categories extends BaseModel
     {
         return $this->hasMany(Products::className(), ['parent_id' => 'id']);
     }
+    public function getLink(){
+        if (strcasecmp($this->title_ru, "Ткани") == 0) {
+            return '/site/fabrics';
+        }
+        if (strcasecmp($this->title_ru, "Полотно") == 0) {
+            return '/site/polotno';
+        }
+        if (strcasecmp($this->title_ru, "УНИФОРМА") == 0) {
+            return '/site/uniforma';
+        }
+        if (strcasecmp($this->title_ru, "КОНТРАКТНОЕ ПРОИЗВОДСТВО") == 0) {
+            return '/site/contract?id=3';
+        }
+    }
+    public function getTitle()
+    {
+        return $this->{'title_'. Yii::$app->language};
+    }
+
+    public function getContent()
+    {
+        return $this->{'content_'. Yii::$app->language};
+    }
+    public function getSubContent()
+    {
+        return $this->{'sub_content_'. Yii::$app->language};
+    }
 }

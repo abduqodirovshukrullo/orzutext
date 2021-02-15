@@ -258,6 +258,29 @@ class SiteController extends Controller
             'partners'=>$partners,
         ]);
     }
+    public function actionFabrics(){
+        $polotno = Products::find()
+        ->andWhere(['parent_id'=>Products::FABRICS])
+        ->andWhere(['status'=>BaseModel::STATUS_ACTIVE])
+        ->orderBy(['order'=>SORT_ASC])->all();
+        $partners = OurPartners::find()->where(['status'=>BaseModel::STATUS_ACTIVE])->orderBy(['order'=>SORT_ASC])->all();
+        return $this->render('fabrics',[
+            'products'=>$polotno,
+            'partners'=>$partners,
+        ]);
+    }
+    public function actionFabricsIn($id){
+        $polotno = Products::find()
+        ->andWhere(['parent_id'=>Products::FABRICS])->andWhere(['id'=>$id])->one();
+        // debug($polotno);
+        // exit;
+        $partners = OurPartners::find()->where(['status'=>BaseModel::STATUS_ACTIVE])->orderBy(['order'=>SORT_ASC])->all();
+    
+        return $this->render('polotno-in',[
+            'products'=>$polotno,
+            'partners'=>$partners,
+        ]);
+    }
     public function actionProductIn($id){
 
         $polotno = Products::find()
@@ -309,6 +332,14 @@ class SiteController extends Controller
         return $this->render('video',[
             'video'=>$video,
         ]);
+    }
+
+    public function actionBrands(){
+        
+        return $this->render('brands');
+    }
+    public function actionBrandsIn(){
+        return $this->render('brands-in');
     }
 
 
