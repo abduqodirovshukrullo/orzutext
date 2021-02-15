@@ -41,8 +41,9 @@ class Brands extends BaseModel
     {
         return [
             [['type', 'status', 'order'], 'integer'],
-            [['image', 'title_uz', 'title_en', 'title_ru', 'content_uz', 'content_en', 'content_ru'], 'string', 'max' => 255],
-            [['base_file', 'base_files','video_file'], 'safe'],
+            [['image', 'big_image','title_uz', 'title_en', 'title_ru'], 'string', 'max' => 255],
+            [['content_ru','content_uz','content_ru'],'string'],
+            [['base_file', 'base_files','base_file2','video_file'], 'safe'],
         ];
     }
 
@@ -72,5 +73,18 @@ class Brands extends BaseModel
     public function getProducts()
     {
         return $this->hasMany(Products::className(), ['brand_id' => 'id']);
+    }
+    public function getTitle()
+    {
+        return $this->{'title_'. Yii::$app->language};
+    }
+
+    public function getContent()
+    {
+        return $this->{'content_'. Yii::$app->language};
+    }
+    public function getSubContent()
+    {
+        return $this->{'sub_content_'. Yii::$app->language};
     }
 }

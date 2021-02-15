@@ -14,7 +14,7 @@ $this->title = 'Orzu - tekst';
                 <p class="main-slider-text">
                     <?= $item->subContent ?>
                 </p>
-                <button class="main-slider-btn">Подробнее</button>
+                <button class="main-slider-btn"> <a href="<?= $item->link ?>"> Подробнее </a></button>
             </div>
         </div>
     <?php endforeach; ?>
@@ -123,24 +123,26 @@ $this->title = 'Orzu - tekst';
         <div class="product">
             <div class="main-title">Наши бренды</div>
             <div class="product-btn-block control-filter">
-                <button class="product-btn1 filter" data-filter=".brand_1">Детская</button>
+                <button class="product-btn1 filter" data-filter=".brand_0">Детская</button>
                 <button class="product-btn2 filter active" data-filter=".brand_2">Мужская</button>
-                <button class="product-btn3 filter" data-filter=".brand_3">Женская</button>
+                <button class="product-btn3 filter" data-filter=".brand_1">Женская</button>
             </div>
             <div class="row filtering" id="MixItUpE4">
-                <div class="col-xl-4 brand-mix mix brand_1">
-                    <a href="" class="product-block" style="background-image: url('/app/images/man.png');">
-                        <div class="product-inner-wrap">
-                            <h6 class="product-inner-title">Tempor incididunt</h6>
-                            <div class="product-inner">
-                                <h6 class="product-inner-title">By</h6>
-                                <img src="/app/images/honey.png" alt="">
+                <?php foreach($brands as $item):  ?>
+                    <div class="col-xl-4 brand-mix mix brand_<?= $item->type ?>">
+                        <a href="" class="product-block" style="background-image: url('<?= '/uploads/'.$item->big_image ?>');">
+                            <div class="product-inner-wrap">
+                                <h6 class="product-inner-title"><?= $item->title ?></h6>
+                                <div class="product-inner">
+                                    <h6 class="product-inner-title">By</h6>
+                                    <img src="<?= '/uploads/'.$item->image ?>" alt="">
+                                </div>
                             </div>
-                        </div>
 
-                    </a>
-                </div>
-                <div class="col-xl-4 brand-mix mix brand_2">
+                        </a>
+                    </div>
+                <?php endforeach; ?>
+                <!-- <div class="col-xl-4 brand-mix mix brand_2">
                     <a href="" class="product-block" style="background-image: url('/app/images/man.png');">
                         <div class="product-inner-wrap">
                             <h6 class="product-inner-title">Tempor incididunt</h6>
@@ -235,9 +237,9 @@ $this->title = 'Orzu - tekst';
                         </div>
 
                     </a>
-                </div>
+                </div> -->
             </div>
-            <button class="main-tower-middle-btn">Посмотреть все</button>
+            <button class="main-tower-middle-btn"> <a href="/site/brands"> Посмотреть все </a> </button>
         </div>
     </div>
 
@@ -260,7 +262,7 @@ $this->title = 'Orzu - tekst';
                     </div>
                 <?php endforeach; ?>
             </div>
-            <button class="main-tower-middle-btn">Все новости</button>
+            <button class="main-tower-middle-btn"> <a href="/site/news"> Все новости </a></button>
         </div>
     </div>
 

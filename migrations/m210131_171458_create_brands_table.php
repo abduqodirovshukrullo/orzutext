@@ -15,6 +15,7 @@ class m210131_171458_create_brands_table extends Migration
         $this->createTable('{{%brands}}', [
             'id' => $this->primaryKey(),
             'image' => $this->string(),
+            'big_image' => $this->string(),
             'title_uz' => $this->string(),
             'title_en' => $this->string(),
             'title_ru' => $this->string(),

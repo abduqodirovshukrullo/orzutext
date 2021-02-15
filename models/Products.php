@@ -93,6 +93,20 @@ class Products extends BaseModel
             'order' => Yii::t('app', 'Order'),
         ];
     }
+    public function getLink(){
+        if (strcasecmp($this->parent->title_ru, "Ткани") == 0) {
+            return '/site/fabrics-in';
+        }
+        if (strcasecmp($this->parent->title_ru, "Полотно") == 0) {
+            return '/site/polotno-in';
+        }
+        if (strcasecmp($this->parent->title_ru, "УНИФОРМА") == 0) {
+            return '/site/uniforma';
+        }
+        if (strcasecmp($this->parent->title_ru, "КОНТРАКТНОЕ ПРОИЗВОДСТВО") == 0) {
+            return '/site/contract';
+        }
+    }
 
     /**
      * @return \yii\db\ActiveQuery

@@ -13,6 +13,8 @@ use yii\widgets\ActiveForm;
     <?php $form = ActiveForm::begin(); ?>
 
     <?= $form->field($model, 'base_file')->widget(trntv\filekit\widget\Upload::className(), ['url' => app\models\BaseModel::FILE_UPLOAD_URL, 'maxFileSize' => 1000000]) ?>
+    
+    <?= $form->field($model, 'base_file2')->widget(trntv\filekit\widget\Upload::className(), ['url' => app\models\BaseModel::FILE_UPLOAD_URL, 'maxFileSize' => 6*1024*1024]) ?>
 
     <?= $form->field($model, 'title_uz')->textInput(['maxlength' => true]) ?>
 
@@ -20,11 +22,11 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'title_ru')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'content_uz')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'content_uz')->widget(mihaildev\ckeditor\CKEditor::className(), ['editorOptions' => mihaildev\elfinder\ElFinder::ckeditorOptions('elfinder', ['height' => 500])]) ?>
 
-    <?= $form->field($model, 'content_en')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'content_en')->widget(mihaildev\ckeditor\CKEditor::className(), ['editorOptions' => mihaildev\elfinder\ElFinder::ckeditorOptions('elfinder', ['height' => 500])]) ?>
 
-    <?= $form->field($model, 'content_ru')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'content_ru')->widget(mihaildev\ckeditor\CKEditor::className(), ['editorOptions' => mihaildev\elfinder\ElFinder::ckeditorOptions('elfinder', ['height' => 500])]) ?>
 
     <?= $form->field($model, 'type')->dropDownList([app\models\Brands::TYPE_MEN => Yii::t('app', 'Men'), 
     app\models\Brands::TYPE_WOMEN => Yii::t('app', 'Women'),

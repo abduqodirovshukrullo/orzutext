@@ -35,7 +35,7 @@ class Carousel extends BaseModel
     {
         return [
             [['status', 'order'], 'integer'],
-            [['image', 'title_uz', 'title_en', 'title_ru', 'sub_content_uz', 'sub_content_ru', 'sub_content_en'], 'string', 'max' => 255],
+            [['image', 'title_uz', 'link','title_en', 'title_ru', 'sub_content_uz', 'sub_content_ru', 'sub_content_en'], 'string', 'max' => 255],
             [['base_file', 'base_files','video_file'], 'safe'],
         ];
     }

@@ -6,13 +6,20 @@
 
 use app\widgets\Alert;
 use yii\helpers\Html;
+use yii\helpers\Url;
 use yii\bootstrap\Nav;
 use yii\bootstrap\NavBar;
 use yii\widgets\Breadcrumbs;
 use app\assets\AppAsset;
 use app\models\Categories;
 use app\models\BaseModel;
-$categories = Categories::find()->where(['status'=>BaseModel::STATUS_ACTIVE])->orderBy(['order'=>SORT_DESC])->all();
+use app\models\Services;
+use app\models\Socials;
+use app\models\Contacts;
+$socials = Socials::find()->where(['status'=>BaseModel::STATUS_ACTIVE])->orderBy(['order'=>SORT_ASC])->one();
+$categories = Categories::find()->where(['status'=>BaseModel::STATUS_ACTIVE])->orderBy(['order'=>SORT_ASC])->all();
+$services = Services::find()->where(['status'=>BaseModel::STATUS_ACTIVE])->orderBy(['order'=>SORT_ASC])->all();
+$contacts = Contacts::find()->where(['status'=>BaseModel::STATUS_ACTIVE])->orderBy(['order'=>SORT_ASC])->one();
 AppAsset::register($this);
 ?>
 <?php $this->beginPage() ?>
@@ -38,7 +45,7 @@ AppAsset::register($this);
                 </a>
                 <div class="header-center-container wow fadeInUp">
                     <div class="header-center-container-top">
-                        <a href="tel:+998935054505">+998 93 505 45 05</a>
+                        <a href="tel:<?= $contacts->phone ?>"><?= $contacts->phone ?></a>
                         <a href="" class="header-center-container-top-whatsapp">
                             <p>Написать в whatsapp</p>
                             <img src="/app/images/whatsapp.png" alt="">
@@ -66,36 +73,23 @@ AppAsset::register($this);
                                     </li> -->
                                 </ul>
                             </li>
-                            <li class="active"><a href="">Наши бренды</a></li>
+                            <li class="active"><a href="/site/brands">Наши бренды</a></li>
                             <li><a href="">продукция</a>
                                 <ul class="sub-menu">
                                     <?php foreach($categories as $item): ?>
-                                        <li><a href="<?= $item->link ?>"><?= $item->title ?></a></li>
+                                    <li><a href="<?= $item->link ?>"><?= $item->title ?></a></li>
                                     <?php endforeach; ?>
-                                 
+
                                 </ul>
                             </li>
                             <li><a href="">Услуги</a>
                                 <ul class="sub-menu">
-                                    <!-- <li><a href="">About Us</a></li>
-                                    <li><a href="">Diplomas and certificates</a>
-                                        <ul class="sub-menu">
-                                            <li><a href="">man</a></li>
-                                            <li><a href="">woman</a></li>
-                                            <li><a href="">kids</a></li>
-                                        </ul>
+                                    <?php foreach($services as $item): ?>
+                                    <li><a
+                                            href="<?= Url::to(['/site/services','id'=>$item->id]) ?>"><?= $item->title ?></a>
                                     </li>
-                                    <li><a href="">History</a>
-                                    </li>
-                                    <li><a href="">Our clients</a></li>
-                                    <li><a href="">Honey</a></li>
-                                    <li><a>others</a>
-                                        <ul class="sub-menu">
-                                            <li><a href="">man</a></li>
-                                            <li><a href="">woman</a></li>
-                                            <li><a href="">kids</a></li>
-                                        </ul>
-                                    </li> -->
+                                    <?php endforeach; ?>
+
                                 </ul>
                             </li>
                             <li><a href="">Пресс-центр</a>
@@ -134,11 +128,12 @@ AppAsset::register($this);
 
         <div class="header-lang wow slideInRight">
             <div class="header-lang-top">
-                <p>RU</p>
+                <p><?= strtoupper(Yii::$app->language) ?></p>
                 <img src="/app/images/arrow.png" alt="">
                 <div class="header-lang-bottom">
-                    <p class="header-lang-bottom-link">Uz</p>
-                    <p class="header-lang-bottom-link">Ru</p>
+                    <p class="header-lang-bottom-link"> <a href="/site/set-language?l=uz"> Uz</a></p>
+                    <p class="header-lang-bottom-link"> <a href="/site/set-language?l=ru"> Ru</a></p>
+                    <p class="header-lang-bottom-link"> <a href="/site/set-language?l=en"> En</a></p>
                 </div>
             </div>
         </div>
@@ -151,60 +146,52 @@ AppAsset::register($this);
             <div class="footer-menu-block">
                 <ul class="footer-menu">
                     <li class="footer-menu-item"><a class="footer-menu-link" href="">О компании</a></li>
-                    <li class="footer-menu-item"><a class="footer-menu-link" href="">О нас</a></li>
-                    <li class="footer-menu-item"><a class="footer-menu-link" href="">Дипломы и сертификаты</a></li>
-                    <li class="footer-menu-item"><a class="footer-menu-link active" href="">История</a></li>
-                    <li class="footer-menu-item"><a class="footer-menu-link" href="">Наши клиенты</a></li>
-                </ul>
-                <ul class="footer-menu">
-                    <li class="footer-menu-item"><a class="footer-menu-link" href="">Наши бренды</a></li>
-                    <li class="footer-menu-item"><a class="footer-menu-link" href="">Honey
-                        </a></li>
-                    <li class="footer-menu-item"><a class="footer-menu-link" href="">Другие</a></li>
-                </ul>
-                <ul class="footer-menu">
-                    <li class="footer-menu-item"><a class="footer-menu-link" href="">О компании</a></li>
-                    <li class="footer-menu-item"><a class="footer-menu-link" href="">О нас</a></li>
-                    <li class="footer-menu-item"><a class="footer-menu-link" href="">Дипломы и сертификаты</a></li>
-                    <li class="footer-menu-item"><a class="footer-menu-link" href="">История</a></li>
-                    <li class="footer-menu-item"><a class="footer-menu-link" href="">Наши клиенты</a></li>
-                </ul>
-                <ul class="footer-menu">
-                    <li class="footer-menu-item"><a class="footer-menu-link" href="">Наши бренды</a></li>
-                    <li class="footer-menu-item"><a class="footer-menu-link" href="">Honey
-                        </a></li>
-                    <li class="footer-menu-item"><a class="footer-menu-link" href="">Другие</a></li>
-                </ul>
-                <ul class="footer-menu">
-                    <li class="footer-menu-item"><a class="footer-menu-link" href="">О компании</a></li>
-                    <li class="footer-menu-item"><a class="footer-menu-link" href="">О нас</a></li>
-                    <li class="footer-menu-item"><a class="footer-menu-link" href="">Дипломы и сертификаты</a></li>
-                    <li class="footer-menu-item"><a class="footer-menu-link" href="">История</a></li>
-                    <li class="footer-menu-item"><a class="footer-menu-link" href="">Наши клиенты</a></li>
-                </ul>
-                <ul class="footer-menu">
-                    <li class="footer-menu-item"><a class="footer-menu-link" href="">Наши бренды</a></li>
-                    <li class="footer-menu-item"><a class="footer-menu-link" href="">Honey
-                        </a></li>
-                    <li class="footer-menu-item"><a class="footer-menu-link" href="">Другие</a></li>
-                </ul>
-                <ul class="footer-menu">
-                    <li class="footer-menu-item"><a class="footer-menu-link" href="">О компании</a></li>
-                    <li class="footer-menu-item"><a class="footer-menu-link" href="">О нас</a></li>
-                    <li class="footer-menu-item"><a class="footer-menu-link" href="">Дипломы и сертификаты</a></li>
-                    <li class="footer-menu-item"><a class="footer-menu-link" href="">История</a></li>
-                    <li class="footer-menu-item"><a class="footer-menu-link" href="">Наши клиенты</a></li>
-                </ul>
-                <ul class="footer-menu">
-                    <li class="footer-menu-item"><a class="footer-menu-link" href="">Продукция в
-                            наличии</a></li>
-                    <li class="footer-menu-item"><a class="footer-menu-link" href="">Трикотажное полотно </a></li>
-                    <li class="footer-menu-item"><a class="footer-menu-link" href="">Джинсовая ткань</a></li>
-                    <li class="footer-menu-item"><a class="footer-menu-link" href="">Готовые трикотажные изделия</a>
+                    <li class="footer-menu-item"><a class="footer-menu-link" href="/site/about">О нас</a></li>
+                    <li class="footer-menu-item"><a class="footer-menu-link" href="/site/certificates">Дипломы и
+                            сертификаты</a></li>
+                    <li class="footer-menu-item"><a class="footer-menu-link active" href="/site/milestones">История</a>
                     </li>
-                    <li class="footer-menu-item"><a class="footer-menu-link" href=""> Готовые джинсовые
-                            изделия</a></li>
+                    <!-- <li class="footer-menu-item"><a class="footer-menu-link" href="">Наши клиенты</a></li> -->
                 </ul>
+                <ul class="footer-menu">
+                    <li class="footer-menu-item"><a class="footer-menu-link" href="/site/brands">Наши бренды</a></li>
+                    <!-- <li class="footer-menu-item"><a class="footer-menu-link" href="">Honey
+                        </a></li>
+                    <li class="footer-menu-item"><a class="footer-menu-link" href="">Другие</a></li> -->
+                </ul>
+                <ul class="footer-menu">
+                    <li class="footer-menu-item"><a class="footer-menu-link" href="javascript:void(0)">ПРОДУКЦИЯ</a>
+                    </li>
+                    <?php foreach($categories as $item): ?>
+                    <li class="footer-menu-item"><a class="footer-menu-link"
+                            href="<?= $item->link ?>"><?= mb_strtoupper($item->title )?></a></li>
+                    <?php endforeach; ?>
+                </ul>
+                <ul class="footer-menu">
+                    <li class="footer-menu-item"><a class="footer-menu-link" href="javascript:void(0)">УСЛУГИ</a></li>
+                    <?php foreach($services as $item): ?>
+                    <li class="footer-menu-item"><a class="footer-menu-link"
+                            href="<?= Url::to(['/site/services','id'=>$item->id]) ?>"><?= $item->title ?>
+                        </a></li>
+                    <?php endforeach; ?>
+                </ul>
+                <ul class="footer-menu">
+                    <li class="footer-menu-item"><a class="footer-menu-link" href="javascript:void(0)">ПРЕСС-ЦЕНТР</a>
+                    </li>
+                    <li class="footer-menu-item"><a class="footer-menu-link" href="/site/news">Новости</a></li>
+                    <li class="footer-menu-item"><a class="footer-menu-link" href="/site/video">Видео галерея</a></li>
+                    <li class="footer-menu-item"><a class="footer-menu-link" href="/site/photo">Фотогалерея</a></li>
+
+                </ul>
+                <ul class="footer-menu">
+                    <li class="footer-menu-item"><a class="footer-menu-link" href="/site/vacancy">КАРЬЕРА</a></li>
+
+                </ul>
+                <ul class="footer-menu">
+                    <li class="footer-menu-item"><a class="footer-menu-link" href="/site/contact">КОНТАКТЫ</a></li>
+
+                </ul>
+
             </div>
             <div class="footer-social-block">
                 <div class="footer-logo">
@@ -214,13 +201,19 @@ AppAsset::register($this);
                     <div class="footer-social-name">Социальные сети</div>
                     <div class="footer-social-icons">
                         <div class="footer-social-icon">
-                            <img src="/app/images/telegram.png" alt="">
+                            <a href="<?= $socials->telegram ?>">
+                                <img src="/app/images/telegram.png" alt="">
+                            </a>
                         </div>
                         <div class="footer-social-icon active">
-                            <img src="/app/images/facebok.png" alt="">
+                            <a href="<?= $socials->facebook ?>">
+                                <img src="/app/images/facebok.png" alt="">
+                            </a>
                         </div>
                         <div class="footer-social-icon">
-                            <img src="/app/images/insta.png" alt="">
+                            <a href="<?= $socials->instagram ?>">
+                                <img src="/app/images/insta.png" alt="">
+                            </a>
                         </div>
                     </div>
                 </div>

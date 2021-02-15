@@ -100,6 +100,11 @@ use app\modules\admin\widgets\Menu;
                                     'url' => ['video/index'],
                                     'icon' => '<i class="fa fa-tachometer"></i>',
                                 ],
+                                [
+                                    'label' => 'Services',
+                                    'url' => ['services/index'],
+                                    'icon' => '<i class="fa fa-tachometer"></i>',
+                                ],
                                 
                             ]
                         ],
@@ -108,6 +113,11 @@ use app\modules\admin\widgets\Menu;
                             'url' => ['#'],
                             'icon' => '<i class="fa fa-tachometer"></i>',
                             'items'=>[
+                                [
+                                    'label' => 'Socials',
+                                    'url' => ['socials/index'],
+                                    'icon' => '<i class="fa fa-tachometer"></i>',
+                                ],
                                 [
                                     'label' => 'Pages',
                                     'url' => ['pages/index'],

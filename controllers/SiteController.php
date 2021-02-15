@@ -29,7 +29,9 @@ use app\models\GalleryPhoto;
 use app\models\OurWork;
 use app\models\OurAdvantage;
 use app\models\Numbers;
+use app\models\Services;
 use app\models\Tools;
+use app\models\Brands;
 class SiteController extends Controller
 {
     public function init()
@@ -133,6 +135,8 @@ class SiteController extends Controller
         ->orderBy(['order'=>SORT_ASC])->all();
         $news = News::find()->where(['status'=>BaseModel::STATUS_ACTIVE])->orderBy(['order'=>SORT_ASC])->all();
         $partners = Partners::find()->where(['status'=>BaseModel::STATUS_ACTIVE])->orderBy(['order'=>SORT_ASC])->all();
+        $brands = Brands::find()->where(['status'=>BaseModel::STATUS_ACTIVE])->orderBy(['order'=>SORT_DESC])->all();
+ 
         return $this->render('index',[
             'carousel'=>$carousel,
             'about'=>$about,
@@ -141,6 +145,7 @@ class SiteController extends Controller
             'uniform'=>$uniform,
             'news'=>$news,
             'partners'=>$partners,
+            'brands'=>$brands,
         ]);
     }
 
@@ -335,11 +340,31 @@ class SiteController extends Controller
     }
 
     public function actionBrands(){
-        
-        return $this->render('brands');
+        $brands = Brands::find()->where(['status'=>BaseModel::STATUS_ACTIVE])->orderBy(['order'=>SORT_DESC])->all();
+        $partners = OurPartners::find()->where(['status'=>BaseModel::STATUS_ACTIVE])->orderBy(['order'=>SORT_ASC])->all();
+    
+        return $this->render('brands',[
+            'brands'=>$brands,
+            'partners'=>$partners,
+        ]);
     }
-    public function actionBrandsIn(){
-        return $this->render('brands-in');
+    public function actionBrandIn($id){
+        $brand = Brands::findOne(['id'=>$id]);
+        $partners = OurPartners::find()->where(['status'=>BaseModel::STATUS_ACTIVE])->orderBy(['order'=>SORT_ASC])->all();
+    
+        return $this->render('brands-in',[
+            'brand'=>$brand,
+            'partners'=>$partners,
+        ]);
+    }
+
+    public function actionServices($id){
+        $contract = Services::findOne(['id'=>$id]);
+        $partners = OurPartners::find()->where(['status'=>BaseModel::STATUS_ACTIVE])->orderBy(['order'=>SORT_ASC])->all();
+        return $this->render('services',[
+            'contract'=>$contract,
+            'partners'=>$partners,
+        ]);
     }
 
 
