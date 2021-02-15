@@ -102,7 +102,8 @@ class Categories extends BaseModel
         if (strcasecmp($this->title_ru, "УНИФОРМА") == 0) {
             return '/site/uniforma';
         }
-        if (strcasecmp($this->title_ru, "КОНТРАКТНОЕ ПРОИЗВОДСТВО") == 0) {
+        if (strcasecmp($this->title_ru, "КОНТРАКТНОЕ ПРОИЗВОДСТВО
+        ") == 0) {
             return '/site/contract?id=3';
         }
     }
