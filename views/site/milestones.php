@@ -11,21 +11,22 @@ use yii\captcha\Captcha;
 $this->title = $this->params['breadTitle'];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="pages-info" style="background-image: url('<?='/uploads/'.$this->params['breadImage']?>');">
-    <h3 class="pages-info-title wow tada"><?=  $this->title ?></h3>
+<div class="pages-info" style="background-image: url('<?= '/uploads/' . $this->params['breadImage'] ?>');">
+    <h3 class="pages-info-title"><?= $this->title ?></h3>
     <ul class="pages-info-menu">
         <li class="pages-info-menu-item"><a class="pages-info-menu-link" href="<?= Yii::$app->homeUrl ?>"><?= Yii::t('app', 'Главная'); ?></a></li>
-        <li class="pages-info-menu-item"><a class="pages-info-menu-link" href="javascript:void(0)"><?=  $this->title ?></a></li>
+        <li class="pages-info-menu-item"><a class="pages-info-menu-link" href="javascript:void(0)"><?= $this->title ?></a></li>
     </ul>
 </div>
 
-    <section class="history">
-        <div class="container">
-            <div class="contract-in-text"><?= $this->params['pageContent'] ?></div>
+<section class="history">
+    <div class="container">
+        <div class="contract-in-text"><?= $this->params['pageContent'] ?></div>
 
-            <div class="year-wrap">
-                <?php $i=1;foreach($history as $item): ?>
-                <?php if($i%2!==0): ?>
+        <div class="year-wrap">
+            <?php $i = 1;
+            foreach ($history as $item) : ?>
+                <?php if ($i % 2 !== 0) : ?>
                     <div class="year-item wow bounceInLeft">
                         <div class="year-block">
                             <div class="year-block-title">
@@ -40,7 +41,7 @@ $this->params['breadcrumbs'][] = $this->title;
                         </div>
                         <div class="year-empty"></div>
                     </div>
-                    <?php else: ?>
+                <?php else : ?>
                     <div class="year-item wow bounceInRight">
                         <div class="year-empty"></div>
 
@@ -53,13 +54,14 @@ $this->params['breadcrumbs'][] = $this->title;
                                 <!-- <h5 class="year-text-title" style="color: #278abe; font-weight: bold;">January</h5> -->
                                 <?= $item->content ?>
                             </div>
-                          
+
 
                         </div>
                     </div>
-                    <?php endif; ?>
-                <?php $i++; endforeach; ?>
-                
-            </div>
+                <?php endif; ?>
+            <?php $i++;
+            endforeach; ?>
+
         </div>
-    </section>
+    </div>
+</section>

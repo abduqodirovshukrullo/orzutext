@@ -16,10 +16,11 @@ use app\models\BaseModel;
 use app\models\Services;
 use app\models\Socials;
 use app\models\Contacts;
-$socials = Socials::find()->where(['status'=>BaseModel::STATUS_ACTIVE])->orderBy(['order'=>SORT_ASC])->one();
-$categories = Categories::find()->where(['status'=>BaseModel::STATUS_ACTIVE])->orderBy(['order'=>SORT_ASC])->all();
-$services = Services::find()->where(['status'=>BaseModel::STATUS_ACTIVE])->orderBy(['order'=>SORT_ASC])->all();
-$contacts = Contacts::find()->where(['status'=>BaseModel::STATUS_ACTIVE])->orderBy(['order'=>SORT_ASC])->one();
+
+$socials = Socials::find()->where(['status' => BaseModel::STATUS_ACTIVE])->orderBy(['order' => SORT_ASC])->one();
+$categories = Categories::find()->where(['status' => BaseModel::STATUS_ACTIVE])->orderBy(['order' => SORT_ASC])->all();
+$services = Services::find()->where(['status' => BaseModel::STATUS_ACTIVE])->orderBy(['order' => SORT_ASC])->all();
+$contacts = Contacts::find()->where(['status' => BaseModel::STATUS_ACTIVE])->orderBy(['order' => SORT_ASC])->one();
 AppAsset::register($this);
 ?>
 <?php $this->beginPage() ?>
@@ -43,7 +44,7 @@ AppAsset::register($this);
                 <a href="/" class="header-center-logo">
                     <img src="/app/images/logo.png" alt="">
                 </a>
-                <div class="header-center-container wow fadeInUp">
+                <div class="header-center-container">
                     <div class="header-center-container-top">
                         <a href="tel:<?= $contacts->phone ?>"><?= $contacts->phone ?></a>
                         <a href="" class="header-center-container-top-whatsapp">
@@ -74,25 +75,24 @@ AppAsset::register($this);
                                 </ul>
                             </li>
                             <li class="active"><a href="/site/brands">Наши бренды</a></li>
-                            <li><a href="">продукция</a>
+                            <li><a>продукция</a>
                                 <ul class="sub-menu">
-                                    <?php foreach($categories as $item): ?>
-                                    <li><a href="<?= $item->link ?>"><?= $item->title ?></a></li>
+                                    <?php foreach ($categories as $item) : ?>
+                                        <li><a href="<?= $item->link ?>"><?= $item->title ?></a></li>
                                     <?php endforeach; ?>
 
                                 </ul>
                             </li>
-                            <li><a href="">Услуги</a>
+                            <li><a>Услуги</a>
                                 <ul class="sub-menu">
-                                    <?php foreach($services as $item): ?>
-                                    <li><a
-                                            href="<?= Url::to(['/site/services','id'=>$item->id]) ?>"><?= $item->title ?></a>
-                                    </li>
+                                    <?php foreach ($services as $item) : ?>
+                                        <li><a href="<?= Url::to(['/site/services', 'id' => $item->id]) ?>"><?= $item->title ?></a>
+                                        </li>
                                     <?php endforeach; ?>
 
                                 </ul>
                             </li>
-                            <li><a href="">Пресс-центр</a>
+                            <li><a>Пресс-центр</a>
                                 <ul class="sub-menu">
                                     <li><a href="/site/news">Новости</a></li>
                                     <li><a href="/site/video">Видео галерея</a>
@@ -162,17 +162,15 @@ AppAsset::register($this);
                 <ul class="footer-menu">
                     <li class="footer-menu-item"><a class="footer-menu-link" href="javascript:void(0)">ПРОДУКЦИЯ</a>
                     </li>
-                    <?php foreach($categories as $item): ?>
-                    <li class="footer-menu-item"><a class="footer-menu-link"
-                            href="<?= $item->link ?>"><?= mb_strtoupper($item->title )?></a></li>
+                    <?php foreach ($categories as $item) : ?>
+                        <li class="footer-menu-item"><a class="footer-menu-link" href="<?= $item->link ?>"><?= mb_strtoupper($item->title) ?></a></li>
                     <?php endforeach; ?>
                 </ul>
                 <ul class="footer-menu">
                     <li class="footer-menu-item"><a class="footer-menu-link" href="javascript:void(0)">УСЛУГИ</a></li>
-                    <?php foreach($services as $item): ?>
-                    <li class="footer-menu-item"><a class="footer-menu-link"
-                            href="<?= Url::to(['/site/services','id'=>$item->id]) ?>"><?= $item->title ?>
-                        </a></li>
+                    <?php foreach ($services as $item) : ?>
+                        <li class="footer-menu-item"><a class="footer-menu-link" href="<?= Url::to(['/site/services', 'id' => $item->id]) ?>"><?= $item->title ?>
+                            </a></li>
                     <?php endforeach; ?>
                 </ul>
                 <ul class="footer-menu">

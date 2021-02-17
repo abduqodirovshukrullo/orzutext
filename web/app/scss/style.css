@@ -3093,6 +3093,9 @@ input.semi-placeholder::placeholder {
   -webkit-transition: all 0.3s ease;
   transition: all 0.3s ease;
 }
+.main-slider-btn a{
+  color: #3b3b3b;
+}
 
 .main-slider-btn:hover {
   background-color: transparent;
@@ -3284,6 +3287,9 @@ input.semi-placeholder::placeholder {
 
 .main-tower .active::before {
   background-color: #4068a3;
+}
+.main-tower-middle-btn a{
+  color: #3b3b3b;
 }
 
 .main-tower-middle-btn {
@@ -3572,7 +3578,7 @@ input.semi-placeholder::placeholder {
   width: 100%;
   height: 260px;
   background-repeat: no-repeat;
-  background-size: cover;
+  background-size: contain;
   background-position: center center;
 }
 
@@ -3593,6 +3599,7 @@ input.semi-placeholder::placeholder {
 .product-inner-wrap {
   opacity: 1;
   visibility: visible;
+  transition: all 0.5s linear;
 }
 
 .product-inner {
@@ -3748,6 +3755,7 @@ input.semi-placeholder::placeholder {
 .logo-slider-img {
   height: 100px;
   position: relative;
+  padding: 10px;
 }
 
 .logo-slider-img img {

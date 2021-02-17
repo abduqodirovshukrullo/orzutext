@@ -46,6 +46,9 @@
 }
 
 @media screen and (max-width: 991px) {
+  .sertificates .slick-dots{
+    bottom: -25px;
+  }
   .year-item:nth-child(even) .year-text {
     padding-left: 29px;
     padding-right: 0px;
